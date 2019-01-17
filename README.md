@@ -1,0 +1,2 @@
+# Sweepstakes
+devCodeCamp Sweepstakes project
