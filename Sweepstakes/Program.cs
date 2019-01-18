@@ -11,6 +11,18 @@ namespace Sweepstakes
         static void Main(string[] args)
         {
 
+            ISweepstakesManager manager;
+            Manager myManager = new Manager();
+            manager = myManager.ManagerSelection();
+
+
+            //SweepstakesStackManager stackManager = new SweepstakesStackManager();
+            //SweepstakesQueueManager queueManager = new SweepstakesQueueManager();
+            //myFirm.CreateContestant();
+            //Console.WriteLine($"{myFirm.mySweep.dictionary.Count} people added to sweepstakes");
+            //Console.ReadLine();
+
+
         }
     }
 }

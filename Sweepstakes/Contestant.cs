@@ -12,21 +12,19 @@ namespace Sweepstakes
         public string firstName;
         public string lastName;
         public string emailId;
-        public int RegNumber;
+        public int regNumber;
 
 
         //constructor
-        public Contestant()
+        public Contestant(string firstName, string lastName, string emailId)
         {
-
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.emailId = emailId;
         }
 
         //member methods
 
-        public void AssignName()
-        {
-
-        }
 
     }
 }

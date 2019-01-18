@@ -9,46 +9,42 @@ namespace Sweepstakes
     public class Sweepstakes
     {
         //member variables
-        public Dictionary<int, string> dictionary;
-        public UserInterface UI;
+        public Dictionary<int, Contestant> dictionary;
+        public UserInterface UI = new UserInterface();
         public string name;
-        public Random randomWinner = new Random();
+        public Random rnd = new Random();
         public string winner;
         public int winnerRegNumber;
+        public int totalEntries;
         
         
 
         //constructor
         public Sweepstakes(string name)
         {
-            UI = new UserInterface();
-            dictionary = new Dictionary<int, string>();
+            dictionary = new Dictionary<int, Contestant>();
             this.name = name;
         }
 
         //member methods
-
-
         public void RegisterContestant(Contestant contestant)
         {
-            UI.AssignFirstName(contestant);
-            UI.AssingLastName(contestant);
-            UI.AssignEmailId(contestant);
-            UI.AssignRegistrationNumber(contestant);
-            dictionary.Add(contestant.RegNumber, contestant.firstName);
+            dictionary.Add(contestant.regNumber, contestant);
+            totalEntries++;
         }
 
         public string PickWinner()
         {
-            winnerRegNumber = randomWinner.Next(UI.totalEntries);
+            winnerRegNumber = rnd.Next(dictionary.Keys.Min(), dictionary.Keys.Max());
+            Contestant cWinner;
+            cWinner = dictionary[winnerRegNumber];
+            winner = cWinner.firstName + cWinner.lastName;
             return winner;
         }
 
         public void PrintContestantInfo(Contestant contestant)
         {
-
+            UI.DisplayContestantInfo(contestant);
         }
-
-
     }
 }

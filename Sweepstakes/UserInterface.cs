@@ -12,11 +12,28 @@ namespace Sweepstakes
 
         //member variabes
         
-        public int RegistrationNumber = 8888;
-        public int totalEntries;
+        public int RegistrationNumber;
+        Random rnd = new Random();
+        
 
 
         //member methods
+        //Factory Pattern
+        public MarketingFirm ManagerSelection()
+        {
+            Console.WriteLine("Which manager type would you like to hire? Enter 'Stack' or 'Queue'.");
+            string response = Console.ReadLine().ToLower();
+            switch (response)
+            {
+                case "stack":
+                    return new MarketingFirm(new SweepstakesStackManager());
+                case "queue":
+                    return new MarketingFirm(new SweepstakesQueueManager());
+                default:
+                    throw new Exception(string.Format("Not a valid response"));
+
+            }
+        }
         public void AssignFirstName(Contestant contestant)
         {
             Console.WriteLine("Please enter your First Name");
@@ -38,11 +55,16 @@ namespace Sweepstakes
 
         public void AssignRegistrationNumber(Contestant contestant)
         {
-            RegistrationNumber++;
-            contestant.RegNumber = RegistrationNumber;
-            totalEntries++;
+            contestant.regNumber++;
         }
 
-
+        public void DisplayContestantInfo(Contestant contestant)
+        {
+            StringBuilder info = new StringBuilder();
+            info.AppendLine($"Name: {contestant.firstName} {contestant.lastName}");
+            info.AppendLine($"Email Address: {contestant.emailId}");
+            info.AppendLine($"Registration Number:{ contestant.regNumber}");
+            Console.WriteLine(info);
+        }
     }
 }
