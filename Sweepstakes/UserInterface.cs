@@ -14,26 +14,18 @@ namespace Sweepstakes
         
         public int RegistrationNumber;
         Random rnd = new Random();
-        
+
 
 
         //member methods
-        //Factory Pattern
-        public MarketingFirm ManagerSelection()
+        public string AssignSweepstakesName()
         {
-            Console.WriteLine("Which manager type would you like to hire? Enter 'Stack' or 'Queue'.");
-            string response = Console.ReadLine().ToLower();
-            switch (response)
-            {
-                case "stack":
-                    return new MarketingFirm(new SweepstakesStackManager());
-                case "queue":
-                    return new MarketingFirm(new SweepstakesQueueManager());
-                default:
-                    throw new Exception(string.Format("Not a valid response"));
-
-            }
+            Console.WriteLine("Please Enter the Sweepstakes Name");
+            string name = Console.ReadLine();
+            return name;
         }
+            
+
         public void AssignFirstName(Contestant contestant)
         {
             Console.WriteLine("Please enter your First Name");

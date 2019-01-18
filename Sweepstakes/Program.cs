@@ -12,8 +12,10 @@ namespace Sweepstakes
         {
 
             ISweepstakesManager manager;
-            Manager myManager = new Manager();
-            manager = myManager.ManagerSelection();
+            manager = Manager.ManagerSelection();
+            MarketingFirm myFirm = new MarketingFirm(manager);
+            myFirm.CreateSweepstakes();
+            Console.ReadLine();
 
 
             //SweepstakesStackManager stackManager = new SweepstakesStackManager();

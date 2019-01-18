@@ -9,25 +9,33 @@ namespace Sweepstakes
     public class MarketingFirm
     {
         public Contestant contestant = new Contestant("John", "Doe", "jdoe@gmail.com");
-        public Sweepstakes mySweep;
-        public ISweepstakesManager Manager;
+        public Sweepstakes sweepstakes;
+        public string sweepstakesName;
+
+
+        ISweepstakesManager Manager;
 
         //Dependency Injection
         public MarketingFirm(ISweepstakesManager Manager)
         {
             this.Manager = Manager;
-            //mySweep = new Sweepstakes("Sweepstakes 2019");
+            sweepstakes = new Sweepstakes(sweepstakesName);
         }
 
+        public void CreateSweepstakes()
+        {
+            sweepstakesName = sweepstakes.UI.AssignSweepstakesName();
+            sweepstakes  = new Sweepstakes(sweepstakesName);
+        }
         public void CreateContestant()
         {
             for(int i = 0; i < 3; i++)
             {
-                mySweep.UI.AssignFirstName(contestant);
-                mySweep.UI.AssingLastName(contestant);
-                mySweep.UI.AssignEmailId(contestant);
-                mySweep.UI.AssignRegistrationNumber(contestant);
-                mySweep.RegisterContestant(contestant);
+                sweepstakes.UI.AssignFirstName(contestant);
+                sweepstakes.UI.AssingLastName(contestant);
+                sweepstakes.UI.AssignEmailId(contestant);
+                sweepstakes.UI.AssignRegistrationNumber(contestant);
+                sweepstakes.RegisterContestant(contestant);
             }
         }
         

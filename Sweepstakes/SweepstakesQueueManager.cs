@@ -9,6 +9,7 @@ namespace Sweepstakes
     class SweepstakesQueueManager : ISweepstakesManager
     {
         //member variables
+        //Uses Queue data as an underlying structure
         Queue<Sweepstakes> queue = new Queue<Sweepstakes>();
 
         public Sweepstakes GetSweepstakes()

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Sweepstakes
 {
-    class Manager
+    static class Manager
     {
-
-        public ISweepstakesManager ManagerSelection()
+        //Factory Pattern
+        static public ISweepstakesManager ManagerSelection()
         {
             Console.WriteLine("Which manager type would you like to hire? Enter 'Stack' or 'Queue'.");
             string response = Console.ReadLine().ToLower();
@@ -20,8 +20,8 @@ namespace Sweepstakes
                 case "queue":
                     return new SweepstakesQueueManager();
                 default:
-                    throw new Exception(string.Format("Not a valid response"));
-
+                    Console.WriteLine("Not a valid response");
+                    return ManagerSelection();
             }
         }
     }
