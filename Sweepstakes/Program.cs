@@ -15,14 +15,6 @@ namespace Sweepstakes
             MarketingFirm myFirm = new MarketingFirm(manager);
             myFirm.LaunchApp("yes");
             Console.ReadLine();
-           // myFirm.LaunchApp(myFirm.sweepstakes.UI.Reprompt());
-            
-
-
-            //SweepstakesStackManager stackManager = new SweepstakesStackManager();
-            //SweepstakesQueueManager queueManager = new SweepstakesQueueManager();
-
-
 
         }
     }

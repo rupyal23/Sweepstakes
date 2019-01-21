@@ -25,11 +25,14 @@ namespace Sweepstakes
         {
             if(input.ToLower() == "yes")
             {
+                manager.InsertSweepstakes(sweepstakes);
                 RunSweepstakes();
                 LaunchApp(sweepstakes.UI.Reprompt());
             }
             else
             {
+                //sweepstakes.UI.PickWinnerPrompt(manager);
+                sweepstakes.PickWinner();
                 sweepstakes.UI.AppCloseMessage();
                 return;
             }
@@ -38,7 +41,6 @@ namespace Sweepstakes
         {
             CreateSweepstakes();
             CreateContestant();
-
         }
 
         public void CreateSweepstakes()
@@ -57,6 +59,7 @@ namespace Sweepstakes
                 sweepstakes.UI.AssignRegistrationNumber(sweepstakes.contestant);
                 sweepstakes.RegisterContestant(sweepstakes.contestant);
                 sweepstakes.UI.DisplayContestantAdded(sweepstakes.contestant);
+                sweepstakes.UI.DisplayContestantInfo(sweepstakes.contestant);
             }
         }
     }

@@ -41,6 +41,8 @@ namespace Sweepstakes
             Contestant cWinner;
             cWinner = dictionary[winnerRegNumber];
             winner = cWinner.firstName + cWinner.lastName;
+            UI.PickWinnerDisplay(cWinner);
+            PrintContestantInfo(cWinner);
             return winner;
         }
 

@@ -84,13 +84,14 @@ namespace Sweepstakes
             info.AppendLine($"Email Address: {contestant.emailId}");
             info.AppendLine($"Registration Number:{ contestant.regNumber}");
             Console.WriteLine(info);
+            Console.ReadLine();
+            Console.Clear();
         }
         public void DisplayContestantAdded(Contestant contestant)
         {
             Console.ReadLine();
             Console.WriteLine("{0} {1} HAS BEEN ENTERED TO THE SWEEPSTAKES.", contestant.firstName, contestant.lastName);
-            Console.ReadLine();
-            Console.Clear();
+            
         }
 
         public string Reprompt()
@@ -99,12 +100,40 @@ namespace Sweepstakes
             return Console.ReadLine().ToLower().Trim();
             
         }
-
+        //Close Message method
         public void AppCloseMessage()
         {
             Console.WriteLine("THANKYOU! HAVE A NICE DAY.");
         }
 
+        //Helper method for pick winner/need to work
+        public void PickWinnerPrompt(ISweepstakesManager manager)
+        {
+            Type type = manager.GetType();
+            if (type.Name == "SweepstakesStackManager")
+            {
+                //Need to write logic
+            }
+            else if(type.Name == "SweepstakesQueueManager")
+            {
+                Console.WriteLine("Do you want to pick a winner for the Sweepstake? Enter 'yes' or 'no'");
+                string response = Console.ReadLine().ToLower().Trim();
+                switch (response)
+                {
+                    case "yes":
+                        //Write Logic
+                    case "no":
+                        //Write Logic
+                    default:
+                        PickWinnerPrompt(manager);
+                        break;
+                }
+            }
+        }
 
+        public void PickWinnerDisplay(Contestant contestant)
+        {
+            Console.WriteLine("Winner for this Sweepstake is: {0} {1}", contestant.firstName, contestant.lastName);
+        }
     }
 }
