@@ -11,6 +11,7 @@ namespace Sweepstakes
         //member variables
         public Dictionary<int, Contestant> dictionary;
         public UserInterface UI = new UserInterface();
+        public Contestant contestant;
         public string name;
         public Random rnd = new Random();
         public string winner;
@@ -22,6 +23,7 @@ namespace Sweepstakes
         //constructor
         public Sweepstakes(string name)
         {
+            contestant = new Contestant("john", "doe", "johndoe@gmail.com");
             dictionary = new Dictionary<int, Contestant>();
             this.name = name;
         }
@@ -46,5 +48,6 @@ namespace Sweepstakes
         {
             UI.DisplayContestantInfo(contestant);
         }
+
     }
 }

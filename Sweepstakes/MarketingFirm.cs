@@ -8,18 +8,37 @@ namespace Sweepstakes
 {
     public class MarketingFirm
     {
-        public Contestant contestant = new Contestant("John", "Doe", "jdoe@gmail.com");
+        
         public Sweepstakes sweepstakes;
         public string sweepstakesName;
-
-
-        ISweepstakesManager Manager;
+        public ISweepstakesManager manager;
+        
 
         //Dependency Injection
-        public MarketingFirm(ISweepstakesManager Manager)
+        public MarketingFirm(ISweepstakesManager manager)
         {
-            this.Manager = Manager;
+            this.manager = manager;
             sweepstakes = new Sweepstakes(sweepstakesName);
+        }
+
+        public void LaunchApp(string input)
+        {
+            if(input.ToLower() == "yes")
+            {
+                RunSweepstakes();
+                LaunchApp(sweepstakes.UI.Reprompt());
+            }
+            else
+            {
+                sweepstakes.UI.AppCloseMessage();
+                return;
+            }
+        }
+        public void RunSweepstakes()
+        {
+            CreateSweepstakes();
+            CreateContestant();
+
         }
 
         public void CreateSweepstakes()
@@ -29,16 +48,16 @@ namespace Sweepstakes
         }
         public void CreateContestant()
         {
-            for(int i = 0; i < 3; i++)
+            int numberOfContestants = sweepstakes.UI.NumberOfContestants();
+            for(int i = 0; i < numberOfContestants; i++)
             {
-                sweepstakes.UI.AssignFirstName(contestant);
-                sweepstakes.UI.AssingLastName(contestant);
-                sweepstakes.UI.AssignEmailId(contestant);
-                sweepstakes.UI.AssignRegistrationNumber(contestant);
-                sweepstakes.RegisterContestant(contestant);
+                sweepstakes.UI.AssignFirstName(sweepstakes.contestant);
+                sweepstakes.UI.AssingLastName(sweepstakes.contestant);
+                sweepstakes.UI.AssignEmailId(sweepstakes.contestant);
+                sweepstakes.UI.AssignRegistrationNumber(sweepstakes.contestant);
+                sweepstakes.RegisterContestant(sweepstakes.contestant);
+                sweepstakes.UI.DisplayContestantAdded(sweepstakes.contestant);
             }
         }
-        
     }
-
 }

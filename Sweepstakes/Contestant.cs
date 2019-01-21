@@ -11,7 +11,9 @@ namespace Sweepstakes
         //member variables
         public string firstName;
         public string lastName;
+
         public string emailId;
+    
         public int regNumber;
 
 

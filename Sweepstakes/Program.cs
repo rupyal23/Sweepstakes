@@ -10,19 +10,18 @@ namespace Sweepstakes
     {
         static void Main(string[] args)
         {
-
             ISweepstakesManager manager;
             manager = Manager.ManagerSelection();
             MarketingFirm myFirm = new MarketingFirm(manager);
-            myFirm.CreateSweepstakes();
+            myFirm.LaunchApp("yes");
             Console.ReadLine();
+           // myFirm.LaunchApp(myFirm.sweepstakes.UI.Reprompt());
+            
 
 
             //SweepstakesStackManager stackManager = new SweepstakesStackManager();
             //SweepstakesQueueManager queueManager = new SweepstakesQueueManager();
-            //myFirm.CreateContestant();
-            //Console.WriteLine($"{myFirm.mySweep.dictionary.Count} people added to sweepstakes");
-            //Console.ReadLine();
+
 
 
         }
